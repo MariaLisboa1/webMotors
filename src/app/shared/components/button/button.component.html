@@ -1,0 +1,13 @@
+<button
+  [style.height]="height"
+  [style.width]="width"
+  [style.font-size]="fontSize"
+  [style.margin]="margin"
+  type="submit"
+  [class.disabled]="disabled"
+  [disabled]="disabled"
+  class="button"
+  (click)="getClick()"
+>
+  <span>{{ title }}</span>
+</button>

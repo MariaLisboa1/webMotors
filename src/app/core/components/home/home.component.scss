@@ -1,0 +1,69 @@
+.container {
+  max-width: 933px;
+  max-height: 312px;
+  a {
+    color: #94949e;
+    margin-right: 5px;
+  }
+
+  app-button {
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+
+  .active::after {
+    display: block;
+    margin: 0 auto;
+    height: 3px;
+    content: "";
+    background-color: #f3123c;
+  }
+
+  .active {
+    color: #2e2e37;
+  }
+}
+
+h2 {
+  font-size: 16px;
+  color: #686976;
+  margin-left: 39px;
+  margin-top: 20px;
+}
+
+.box {
+  margin-left: 39px;
+  img {
+    min-width: 280px;
+    max-width: 280px;
+    min-height: 200px;
+    max-height: 200px;
+
+    border-radius: 10px;
+
+    -webkit-box-shadow: 0 10px 6px -6px #777;
+    -moz-box-shadow: 0 10px 6px -6px #777;
+    box-shadow: 0 10px 6px -6px #777;
+  }
+}
+
+.none {
+  display: none;
+}
+
+.flex-item-1 {
+  cursor: pointer;
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .container {
+    width: 401px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .container {
+    width: 320px;
+    margin-left: 25px;
+  }
+}

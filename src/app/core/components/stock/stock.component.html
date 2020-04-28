@@ -1,0 +1,44 @@
+<div class="flex flex-wrap">
+  <div
+    class="box fade-in"
+    *ngFor="let vehicle of vehicles"
+    (click)="buyVehicle(vehicle)"
+  >
+    <img [src]="vehicle?.Image" alt="" />
+
+    <div class="margin-left">
+      <h2>{{ vehicle.Make }}</h2>
+      <h3>{{ vehicle.Model }}</h3>
+
+      <p class="price">
+        {{ vehicle.Price.replace(",", ".") | currency: "BRL":true }}
+      </p>
+      <div class="flex space-between">
+        <p>{{ vehicle.YearFab }}/{{ vehicle.YearModel }}</p>
+        <p>{{ vehicle.KM }} Km</p>
+      </div>
+    </div>
+
+    <div class="divisor"></div>
+
+    <div class="flex space-between footer-box">
+      <p class="location margin-left">São Paulo - SP</p>
+      <app-button
+        [height]="'25px'"
+        [width]="'50px'"
+        [fontSize]="'12px'"
+        [margin]="'4px'"
+        [disabled]="false"
+        [title]="'Excluir'"
+        (button)="deleteVehicle(vehicle._id)"
+        *ngIf="user?._id === vehicle?.UserId"
+      ></app-button>
+    </div>
+
+    <app-alert
+      [visible]="visibleErrorServer"
+      [message]="'Ocorreu um erro '"
+      [color]="'red'"
+    ></app-alert>
+  </div>
+</div>

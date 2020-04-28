@@ -1,0 +1,53 @@
+<div class="container-header">
+  <header class="header">
+    <div routerLink="/home" (click)="reset($event)" class="logo">
+      <img class="logo" src="../../../../assets/images/logo.png" alt="" />
+    </div>
+
+    <div *ngIf="visibleMenu" class="menu-mobile flex">
+      <input type="checkbox" id="navicon" />
+      <div class="nav-toggle">
+        <label for="navicon" class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+      </div>
+      <nav class="sidebar" role="complementary">
+        <ul>
+          <li>
+            <a href="">Comprar</a>
+          </li>
+          <li>
+            <a href="">Vender</a>
+          </li>
+          <li>
+            <a href="">Serviços</a>
+          </li>
+          <li class="help">
+            <a href="">Ajuda</a>
+          </li>
+          <app-user-detail></app-user-detail>
+        </ul>
+      </nav>
+    </div>
+
+    <nav *ngIf="visibleMenu" class="menu-web">
+      <ul>
+        <li>
+          <a href="">Comprar</a>
+        </li>
+        <li>
+          <a href="">Vender</a>
+        </li>
+        <li>
+          <a href="">Serviços</a>
+        </li>
+        <li class="help">
+          <a href="">Ajuda</a>
+        </li>
+        <app-user-detail></app-user-detail>
+      </ul>
+    </nav>
+  </header>
+</div>

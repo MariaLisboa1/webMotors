@@ -1,0 +1,20 @@
+<div class="fade-in">
+  <h2>{{title}}</h2>
+
+  <div class="flex">
+    <div class="box box-image box-shadow" *ngFor="let image of images; let
+      index= i">
+      <img class="box-image"[src]="image" alt="">
+    </div>
+
+    <div class="box box-shadow" [style.background-color]="dataBox.background"
+      [style.color]="dataBox.color" [style.border-radius]="dataBox.borderRadius"
+      [style.width]="dataBox.width" [style.height]="dataBox.height"
+      [style.margin-bottom]="dataBox.marginBottom"
+      *ngFor="let title of titlesBox">
+      <p [style.margin-left]="dataBox.marginLeft"
+        [style.margin-top]="dataBox.marginTop">{{title}}</p>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,19 @@
+.disabled {
+  background: #d3687c;
+}
+
+.disabled:hover {
+  background: #d3687c;
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  button {
+    max-width: 250px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  button {
+    max-width: 250px;
+  }
+}

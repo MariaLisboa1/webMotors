@@ -1,0 +1,110 @@
+<app-header [visibleMenu]="true" (clear)="reset($event)"></app-header>
+
+<form
+  class="container"
+  [formGroup]="registerVehicleForm"
+  (ngSubmit)="createVehicle(registerVehicleForm.value)"
+>
+  <h2>Cadastrar Carro</h2>
+
+  <div class="grid grid-template-columns gap">
+    <div class="form-group input-wrapper">
+      <img
+        width="100"
+        height="100"
+        [src]="imageSrc || personSrc"
+        alt="Sua imagem"
+      />
+      <br />
+      <label for="input-file">
+        Selecionar um arquivo
+      </label>
+      <input
+        type="file"
+        id="input-file"
+        name="photo"
+        type="file"
+        value=""
+        (change)="readURL($event)"
+      />
+      <span id="file-name"></span>
+    </div>
+
+    <select formControlName="Make" id="make" (input)="selectMake()">
+      <option
+        *ngFor="let make of makes"
+        [value]="make.Name"
+        [selected]="make.Name"
+        >Marca: {{ make.Name }}</option
+      >
+    </select>
+
+    <select formControlName="Model" id="model" (input)="selectModel()">
+      <option
+        *ngFor="let model of models"
+        [value]="model.Name"
+        [selected]="model.Name"
+        >Modelo: {{ model.Name }}</option
+      >
+    </select>
+
+    <select formControlName="Version" id="version">
+      <option
+        *ngFor="let version of versions"
+        [value]="version.Name"
+        [selected]="version.Name"
+      >
+        Versão:
+        {{ version.Name }}
+      </option>
+    </select>
+
+    <app-input>
+      <input type="text" placeholder="KM*" formControlName="KM" />
+    </app-input>
+
+    <app-input>
+      <input type="text" placeholder="Valor*" formControlName="Price" />
+    </app-input>
+
+    <app-input>
+      <input
+        type="text"
+        placeholder="Ano do modelo*"
+        formControlName="YearModel"
+        maxlength="4"
+        minlength="4"
+      />
+    </app-input>
+
+    <app-input>
+      <input
+        type="text"
+        placeholder="Ano de fábrica*"
+        formControlName="YearFab"
+        maxlength="4"
+        minlength="4"
+      />
+    </app-input>
+
+    <app-input>
+      <input type="text" placeholder="Cor*" formControlName="Color" />
+    </app-input>
+  </div>
+
+  <div class="spinner" *ngIf="visibleLoading"></div>
+
+  <app-alert
+    [visible]="visibleError"
+    [message]="'Ocorreu um erro, por favor
+    tente mais tarde'"
+    [color]="'red'"
+  ></app-alert>
+
+  <app-button
+    [width]="'450px'"
+    [title]="'Cadastrar veículo'"
+    [disabled]="registerVehicleForm.invalid || visibleLoading"
+    (createVehicle)="($event)"
+  ></app-button>
+</form>

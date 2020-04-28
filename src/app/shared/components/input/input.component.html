@@ -1,0 +1,8 @@
+<div class="form-group" [class.is-valid]="hasSuccess()"
+  [class.is-invalid]="hasError()">
+
+  <ng-content></ng-content>
+
+  <span class="help-block" *ngIf="hasError()">
+    Campo obrigatorio.</span>
+</div>

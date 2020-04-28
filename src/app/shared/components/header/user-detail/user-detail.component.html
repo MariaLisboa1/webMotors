@@ -1,0 +1,13 @@
+<ul class="flex">
+  <li>
+    <a [routerLink]="['/register-vehicle']" *ngIf="isLoggedIn()">
+      Cadastrar veículo
+    </a>
+  </li>
+  <li>
+    <a (click)="logout()" *ngIf="isLoggedIn()">Sair</a>
+  </li>
+  <li>
+    <a *ngIf="!isLoggedIn()" [routerLink]="['/login']">Entrar</a>
+  </li>
+</ul>

@@ -1,0 +1,43 @@
+.container {
+  max-width: 450px;
+
+  h3 {
+    color: #393941;
+  }
+}
+
+app-header {
+  width: 450px !important;
+}
+
+.dont-have-account {
+  color: #464752;
+  text-decoration: underline;
+}
+
+.dont-have-account:hover {
+  color: #f3123c;
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .container {
+    max-width: 350px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+  .container {
+    max-width: 300px;
+    margin-left: 20px;
+  }
+
+  app-button {
+    width: 30px !important;
+  }
+}

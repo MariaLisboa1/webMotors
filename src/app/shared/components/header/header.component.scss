@@ -1,0 +1,14 @@
+@media (min-width: 320px) and (max-width: 480px) {
+  .menu-mobile {
+    justify-content: flex-end;
+    display: flex;
+  }
+
+  .menu-web {
+    display: none;
+  }
+
+  .header {
+    width: 430px;
+  }
+}

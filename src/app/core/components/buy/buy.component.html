@@ -1,0 +1,64 @@
+<app-header [visibleMenu]="true"></app-header>
+
+<div class="container">
+  <div class="image">
+    <img [src]="vehicle?.Image" alt="Carro selecionado" />
+  </div>
+
+  <h1 class="text-center">{{ vehicle.Make }} {{ vehicle.Model }}</h1>
+
+  <div class="info flex center">
+    <h1 class="price">
+      {{ vehicle.Price.replace(",", ".") | currency: "BRL":true }}
+    </h1>
+    <app-button
+      [margin]="'20px'"
+      [disabled]="false"
+      [title]="'Comprar'"
+    ></app-button>
+  </div>
+
+  <div class="info grid grid-template-columns center">
+    <div class="info-detail info-left">
+      <h2>Ano</h2>
+      <strong>{{ vehicle.YearModel + "/" + vehicle.YearFab }}</strong>
+    </div>
+
+    <div class="info-detail info-right">
+      <h2>Quilometragem</h2>
+      <strong>{{ vehicle.KM }}</strong>
+    </div>
+
+    <div class="info-detail info-left">
+      <h2>Cor</h2>
+      <strong>{{ vehicle.cOLOR }}</strong>
+    </div>
+
+    <div class="info-detail info-right">
+      <h2>Versão</h2>
+      <strong>{{ vehicle.Version }}</strong>
+    </div>
+  </div>
+
+  <app-alert
+    [visible]="visibleErrorServer"
+    [message]="'Ocorreu um erro, tente novamente mais tarde. '"
+    [color]="'red'"
+  ></app-alert>
+
+  <div class="spinner" *ngIf="visibleLoading"></div>
+
+  <div class="delete">
+    <app-button
+      [height]="'25px'"
+      [width]="'100px'"
+      [fontSize]="'12px'"
+      [disabled]="false"
+      [title]="'Excluir'"
+      (button)="deleteVehicle(vehicle._id)"
+      *ngIf="user?._id === vehicle?.UserId"
+    ></app-button>
+  </div>
+</div>
+
+<app-footer></app-footer>

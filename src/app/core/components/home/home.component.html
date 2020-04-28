@@ -1,0 +1,111 @@
+<app-header [visibleMenu]="true" (clear)="reset($event)"></app-header>
+<div class="container fade-in">
+  <div class="flex flex-top text-center">
+    <a
+      (click)="changeBuy('carro')"
+      class="flex-item-1"
+      [class.active]="activeCar"
+      >Comprar Carros</a
+    >
+    <a
+      (click)="changeBuy('moto')"
+      class="flex-item-1"
+      [class.active]="activeMoto"
+      >Comprar Motos</a
+    >
+    <a
+      href="https://www.webmotors.com.br/vender/?idcmpint=t1:c17:m07:webmotors:cross_home_vender::botao-anunciar-meu-carro-moto"
+      target="_blank"
+      class="flex-item-1"
+      [class.active]="activeSell"
+      >Quero Vender</a
+    >
+    <a
+      href="https://www.webmotors.com.br/financiamento/?inst=header:webmotors:header-deslogado::financiamento"
+      target="_blank"
+      class="flex-item-1"
+      [class.active]="activeFinance"
+      >Quero Financiar</a
+    >
+  </div>
+
+  <form [formGroup]="formSearch" class="flex">
+    <i class="fas fa-search"></i>
+    <input type="text" formControlName="search" [placeholder]="placeholder" />
+
+    <app-button
+      [width]="'300px'"
+      [disabled]="false"
+      [title]="'VER OFERTAS'"
+      (button)="showOffers($event)"
+    ></app-button>
+  </form>
+</div>
+
+<div class="spinner" *ngIf="visibleLoading"></div>
+
+<div *ngIf="!visibleLoading">
+  <app-card-filter
+    (loadData)="getByMakeName($event)"
+    [img]="MAKE_LOGOS"
+    [list]="makes"
+    [title]="'Marca dos carros'"
+    [withSlice]="false"
+  ></app-card-filter>
+
+  <app-card-filter
+    (loadData)="getByMakeName($event)"
+    [list]="models"
+    [title]="'Modelos'"
+    [withSlice]="false"
+  ></app-card-filter>
+
+  <app-card-filter
+    (loadData)="filterVersionByModelName($event)"
+    [list]="versions"
+    [title]="'Versões'"
+    [withSlice]="true"
+  ></app-card-filter>
+
+  <app-alert
+    [visible]="visibleError"
+    [message]="'Não encontramos o veículo
+    desejado :('"
+    [color]="'red'"
+  ></app-alert>
+
+  <app-alert
+    [visible]="visibleErrorServer"
+    [message]="'Houve um erro interno,
+    por favor tente mais tarde :('"
+    [color]="'red'"
+  ></app-alert>
+
+  <app-stock
+    *ngIf="activeStock"
+    [vehicles]="filteredVehicles"
+    [user]="user"
+    (buy)="buy($event)"
+  ></app-stock>
+
+  <app-card
+    *ngIf="visibleCard"
+    [title]="'Categorias'"
+    [images]="IMAGES_CATEGORY"
+  ></app-card>
+
+  <app-card
+    *ngIf="visibleCard"
+    [title]="'Carros mais buscados'"
+    [images]="IMAGES_MOST_WANTED"
+  ></app-card>
+
+  <app-card
+    *ngIf="visibleCard"
+    [title]="'Na webmotors'"
+    [titlesBox]="BOX_TITLES"
+    [dataBox]="dataBox"
+  ></app-card>
+</div>
+
+<app-footer></app-footer>

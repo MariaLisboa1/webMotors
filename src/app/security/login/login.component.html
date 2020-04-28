@@ -1,0 +1,36 @@
+<app-header [visibleMenu]="false"></app-header>
+
+<div class="container">
+  <div class="box">
+    <h3>Login</h3>
+
+    <form [formGroup]="loginForm"
+      (ngSubmit)="login(loginForm.value)">
+
+      <app-input>
+        <input type="email" formControlName="email" placeholder="E-mail*">
+      </app-input>
+
+      <app-input>
+        <input type="password" formControlName="password" placeholder="Senha*">
+      </app-input>
+
+      <div class="spinner" *ngIf="visibleLoading"></div>
+
+      <app-alert [visible]="visibleError" [message]="'Ocorreu um erro, por favor
+        tente mais tarde'" [color]="'red'"></app-alert>
+
+      <app-button [width]="'450px'" [disabled]="loginForm.invalid ||
+        visibleLoading"
+        [title]="'Entrar'"
+        (login)="($event)"></app-button>
+
+      <a class="dont-have-account" [routerLink]="['/register']">Não tem um
+        conta?
+        Cadastre-se</a>
+
+    </form>
+  </div>
+</div>
+
+<app-footer></app-footer>

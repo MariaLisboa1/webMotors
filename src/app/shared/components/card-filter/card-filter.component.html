@@ -1,0 +1,12 @@
+<div class="brand fade-in" *ngIf="list?.length">
+  <h3>{{title}}</h3>
+
+  <div class="flex">
+    <div (click)="load(data.Name)" class="makes text-center"
+      *ngFor="let data of list; let i= index">
+      <img [src]="img[data.Name]" [alt]="'Logo da' + data.Name" *ngIf="img">
+      <p [title]="data.Name">{{ withSlice ? data.Name.slice(0,
+        10) + '...' : data.Name}}</p>
+    </div>
+  </div>
+</div>
